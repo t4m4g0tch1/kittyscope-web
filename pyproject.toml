@@ -1,0 +1,31 @@
+[project]
+name = "kittyscope-web"
+version = "0.1.0"
+description = "Add your description here"
+authors = [
+    { name = "Kotov Mikhail", email = "Kotov@ecopsy.ru" }
+]
+dependencies = [
+    "polars>=1.17.1",
+    "django>=5.1.4",
+    "hurry-filesize>=0.9",
+    "ffmpeg>=1.4",
+    "pypdf>=5.1.0",
+    "pillow>=11.0.0",
+]
+readme = "README.md"
+requires-python = ">= 3.8"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = []
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/kittyscope_web"]

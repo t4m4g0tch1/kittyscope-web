@@ -1,0 +1,26 @@
+{% extends "./base.html" %}
+{% block style %}
+{% load static %}
+    <link rel="stylesheet" href="{% static 'fileanalyzer/css/charts.min.css' %}">
+{% endblock %}
+
+{% block content %}
+    <table class="table">    
+        <thead>
+            <tr>
+            <th scope="col" class="scale-title">File name</th>
+            <th scope="col" class="value-title">Pages</th>
+            </tr>
+        </thead>
+    
+        <tbody>
+            {% for file_info in top_docs_by_pages_count %}
+                <tr>
+                <th class="file-name"> {{ file_info.name }} </th>
+                <td class="file-score">{{ file_info.pages_count }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    
+        </table>
+{% endblock %}

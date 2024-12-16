@@ -1,0 +1,30 @@
+{% extends "./base.html" %}
+{% block style %}
+{% load static %}
+    <link rel="stylesheet" href="{% static 'fileanalyzer/css/charts.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fileanalyzer/css/dashboard.css' %}">
+{% endblock %}
+
+{% block content %}
+    <table class="chart charts-css column show-heading show-labels show-primary-axis show-4-secondary-axes show-data-axes data-spacing-15 hide-data">
+
+    <caption>{{ chart_title }}</caption>
+
+    <thead>
+        <tr>
+        <th scope="col"> Extension </th>
+        <th scope="col"> Count </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for file_extansion_count in files_count_by_extension %}
+            <tr>
+            <th> {{ file_extansion_count.extension }} </th>
+            <td style="--size: calc({{ file_extansion_count.count }} / {{ total_files }});">{{ file_extansion_count.count }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+
+    </table>
+{% endblock %}

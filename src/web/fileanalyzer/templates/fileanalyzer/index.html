@@ -1,0 +1,14 @@
+{% extends './base.html' %}
+{% block content %}
+<main class="px-3">
+  <h1>Проиндексировано файлов</h1>
+  <p class="lead">{% if indexing_files_total_size %}{{ indexing_files_total_size }}{% else %}0{% endif %}</p>
+  <form action="./folder" method="post">
+    {% csrf_token %}
+    <div class="path-input">
+      {{ form }}
+    </div>
+    <input type="submit" class="indexing-btn btn btn-lg btn-light fw-bold border-white bg-white" value="Проиндексировать">
+  </form>
+</main>
+{% endblock %}

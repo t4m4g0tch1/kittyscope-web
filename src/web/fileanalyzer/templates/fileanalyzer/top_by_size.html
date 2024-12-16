@@ -1,0 +1,29 @@
+{% extends "./base.html" %}
+{% block style %}
+{% load static %}
+    <link rel="stylesheet" href="{% static 'fileanalyzer/css/charts.min.css' %}">
+{% endblock %}
+
+{% block content %}
+<table class="table">
+
+    <caption>{{ chart_title }}</caption>
+
+    <thead>
+        <tr>
+        <th scope="col" class="scale-title"> File name </th>
+        <th scope="col" class="value-title"> Size </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for file_info in top_files_by_size %}
+            <tr>
+            <th class="file-name"> {{ file_info.name }} </th>
+            <td class="file-score">{{ file_info.size }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+
+    </table>
+{% endblock %}
